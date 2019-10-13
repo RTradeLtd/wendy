@@ -22,6 +22,7 @@ const (
 	NODE_RACE              // Used when a Node hits a race condition
 	NODE_REPR              // Used when a Node needs to repair its LeafSet
 	NODE_ANN               // Used when a Node broadcasts its presence
+	DATA_SEND              // Used when a Node wants to send data to the network
 )
 
 // String returns a string representation of a message.
