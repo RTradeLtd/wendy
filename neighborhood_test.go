@@ -288,7 +288,7 @@ func TestNeighborhoodSetDeleteMiddle(t *testing.T) {
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
-	third, err := NewNode(third_id, "127.0.0.4", "127.0.0.4", "testing", 0)
+	third, err := NewNode(third_id, toMultiAddrString("127.0.0.4"), toMultiAddrString("127.0.0.4"), "testing", 0)
 	if err != nil {
 		t.Fatal(err)
 	}
