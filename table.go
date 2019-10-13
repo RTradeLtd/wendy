@@ -34,7 +34,10 @@ func (t *routingTable) insertNode(node Node, proximity int64) (*Node, error) {
 func (t *routingTable) insertValues(id NodeID, LocalAddr, GlobalAddr, region string, port int, rtVersion, lsVersion, nsVersion uint64, proximity int64) (*Node, error) {
 	t.lock.Lock()
 	defer t.lock.Unlock()
-	node := NewNode(id, LocalAddr, GlobalAddr, region, port)
+	node, err := NewNode(id, LocalAddr, GlobalAddr, region, port)
+	if err != nil {
+		return nil, err
+	}
 	node.updateVersions(rtVersion, lsVersion, nsVersion)
 	node.setProximity(proximity)
 	row := t.self.ID.CommonPrefixLen(node.ID)

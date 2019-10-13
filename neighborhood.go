@@ -37,7 +37,10 @@ func (n *neighborhoodSet) insertValues(id NodeID, LocalAddr, GlobalAddr, region 
 	if id.Equals(n.self.ID) {
 		return nil, throwIdentityError("insert", "into", "neighborhood set")
 	}
-	insertNode := NewNode(id, LocalAddr, GlobalAddr, region, port)
+	insertNode, err := NewNode(id, LocalAddr, GlobalAddr, region, port)
+	if err != nil {
+		return nil, err
+	}
 	insertNode.updateVersions(rTVersion, lSVersion, nSVersion)
 	insertNode.setProximity(proximity)
 	newNS := [32]*Node{}

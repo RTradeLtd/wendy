@@ -36,7 +36,10 @@ func (l *leafSet) insertNode(node Node) (*Node, error) {
 func (l *leafSet) insertValues(id NodeID, LocalAddr, GlobalAddr, region string, port int, rTVersion, lSVersion, nSVersion uint64) (*Node, error) {
 	l.lock.Lock()
 	defer l.lock.Unlock()
-	node := NewNode(id, LocalAddr, GlobalAddr, region, port)
+	node, err := NewNode(id, LocalAddr, GlobalAddr, region, port)
+	if err != nil {
+		return nil, err
+	}
 	node.updateVersions(rTVersion, lSVersion, nSVersion)
 	side := l.self.ID.RelPos(node.ID)
 	var inserted, contained bool
