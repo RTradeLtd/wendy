@@ -133,7 +133,7 @@ func TestRoutingTableScanSplit(t *testing.T) {
 	if err != nil {
 		t.Fatal(err.Error())
 	}
-	second, err := NewNode(second_id, "127.0.0.3", "127.0.0.3", "testing", 55555)
+	second, err := NewNode(second_id, toMultiAddrString("127.0.0.3"), toMultiAddrString("127.0.0.3"), "testing", 55555)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -124,7 +124,7 @@ func TestNeighborhoodSetDeleteFirst(t *testing.T) {
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
-	second, err := NewNode(second_id, "!27.0.0.3", "127.0.0.3", "testing", 0)
+	second, err := NewNode(second_id, toMultiAddrString("127.0.0.3"), toMultiAddrString("127.0.0.3"), "testing", 0)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -198,7 +198,7 @@ func TestNeighborhoodSetDeleteLast(t *testing.T) {
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
-	second, err := NewNode(second_id, "!27.0.0.3", "127.0.0.3", "testing", 0)
+	second, err := NewNode(second_id, toMultiAddrString("127.0.0.3"), toMultiAddrString("127.0.0.3"), "testing", 0)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -272,7 +272,7 @@ func TestNeighborhoodSetDeleteMiddle(t *testing.T) {
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
-	second, err := NewNode(second_id, "!27.0.0.3", "127.0.0.3", "testing", 0)
+	second, err := NewNode(second_id, toMultiAddrString("127.0.0.3"), toMultiAddrString("127.0.0.3"), "testing", 0)
 	if err != nil {
 		t.Fatal(err)
 	}
