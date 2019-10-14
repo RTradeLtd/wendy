@@ -31,7 +31,6 @@ func NodeIDFromBytes(source []byte) (NodeID, error) {
 
 // NodeIDFromPeerID creates a NodeID from a libp2p peer ID
 func NodeIDFromPeerID(pid peer.ID) (NodeID, error) {
-	var result NodeID
 	if len(pid) < 16 {
 		return [2]uint64{}, errors.New("not enough bytes to create a nodeid")
 	}
@@ -39,9 +38,7 @@ func NodeIDFromPeerID(pid peer.ID) (NodeID, error) {
 	if err != nil {
 		return [2]uint64{}, err
 	}
-	result[0] = binary.BigEndian.Uint64(pidBytes)
-	result[1] = binary.BigEndian.Uint64(pidBytes[8:])
-	return result, nil
+	return NodeIDFromBytes(pidBytes)
 }
 
 // String returns the hexadecimal string encoding of the NodeID.
